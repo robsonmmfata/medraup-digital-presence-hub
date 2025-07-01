@@ -15,24 +15,42 @@ const Contact = () => {
     service: "",
     message: ""
   });
+  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     
-    // Simulate form submission
-    toast({
-      title: "Mensagem enviada com sucesso!",
-      description: "Entrarei em contato em breve. Obrigada!",
-    });
-    
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      service: "",
-      message: ""
-    });
+    try {
+      // Simulando envio de email - aqui você pode integrar com EmailJS ou outro serviço
+      console.log('Enviando email com dados:', formData);
+      
+      // Simular delay de envio
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      toast({
+        title: "Mensagem enviada com sucesso!",
+        description: "Entrarei em contato em breve. Obrigada!",
+      });
+      
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        service: "",
+        message: ""
+      });
+    } catch (error) {
+      console.error('Erro ao enviar email:', error);
+      toast({
+        title: "Erro ao enviar mensagem",
+        description: "Tente novamente ou entre em contato pelo WhatsApp.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -112,6 +130,7 @@ const Contact = () => {
                         onChange={(e) => handleInputChange("name", e.target.value)}
                         className="h-12"
                         placeholder="Seu nome completo"
+                        disabled={isLoading}
                       />
                     </div>
                     
@@ -127,6 +146,7 @@ const Contact = () => {
                         onChange={(e) => handleInputChange("email", e.target.value)}
                         className="h-12"
                         placeholder="seu@email.com"
+                        disabled={isLoading}
                       />
                     </div>
                   </div>
@@ -135,7 +155,7 @@ const Contact = () => {
                     <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
                       Tipo de Serviço *
                     </label>
-                    <Select value={formData.service} onValueChange={(value) => handleInputChange("service", value)}>
+                    <Select value={formData.service} onValueChange={(value) => handleInputChange("service", value)} disabled={isLoading}>
                       <SelectTrigger className="h-12">
                         <SelectValue placeholder="Selecione o serviço desejado" />
                       </SelectTrigger>
@@ -160,15 +180,17 @@ const Contact = () => {
                       onChange={(e) => handleInputChange("message", e.target.value)}
                       className="min-h-32"
                       placeholder="Conte-me mais sobre seu projeto e como posso ajudar..."
+                      disabled={isLoading}
                     />
                   </div>
 
                   <Button 
                     type="submit" 
                     size="lg"
+                    disabled={isLoading}
                     className="w-full bg-medraup-blue hover:bg-medraup-blue-dark text-white h-12 text-lg font-semibold"
                   >
-                    Enviar Mensagem
+                    {isLoading ? "Enviando..." : "Enviar Mensagem"}
                   </Button>
                 </form>
               </CardContent>

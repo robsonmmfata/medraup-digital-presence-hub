@@ -44,7 +44,7 @@ const Hero = () => {
                 const element = document.querySelector("#about");
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="border-white text-white hover:bg-white hover:text-medraup-blue px-8 py-4 text-lg font-semibold"
+              className="border-medraup-orange text-medraup-orange hover:bg-medraup-orange hover:text-white px-8 py-4 text-lg font-semibold"
             >
               Conheça a Loyanne M
             </Button>
