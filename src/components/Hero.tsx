@@ -46,7 +46,7 @@ const Hero = () => {
               }}
               className="border-white text-white hover:bg-white hover:text-medraup-blue px-8 py-4 text-lg font-semibold"
             >
-              Conheça a Medraup
+              Conheça a Loyanne M
             </Button>
           </div>
         </div>

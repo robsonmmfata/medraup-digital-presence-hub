@@ -7,13 +7,13 @@ const About = () => {
           <div className="space-y-6">
             <div>
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                Sobre a <span className="text-medraup-blue">Medraup</span>
+                Sobre a <span className="text-medraup-blue">Loyanne M</span>
               </h2>
               <div className="w-20 h-1 bg-medraup-orange mb-6"></div>
             </div>
             
             <p className="text-lg text-gray-600 leading-relaxed">
-              A Medraup nasceu da paixão por transformar ideias complexas em soluções digitais reais e funcionais. Com expertise em Product Owner e gestão de projetos, ajudo empresas a materializar suas visões em produtos que realmente fazem a diferença no mercado.
+              A Loyanne M nasceu da paixão por transformar ideias complexas em soluções digitais reais e funcionais. Com expertise em Product Owner e gestão de projetos, ajudo empresas a materializar suas visões em produtos que realmente fazem a diferença no mercado.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
