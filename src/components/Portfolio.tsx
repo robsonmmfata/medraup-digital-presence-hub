@@ -2,34 +2,34 @@
 import { Card, CardContent } from "./ui/card";
 
 const Portfolio = () => {
-  const projects = [
+  const cases = [
     {
-      title: "Plataforma E-commerce B2B",
-      category: "Product Owner + Gerência",
-      description: "Desenvolvimento de plataforma completa para vendas B2B com integração de sistemas e gestão de pedidos automatizada.",
-      results: ["Aumento de 40% nas vendas", "Redução de 60% no tempo de processamento", "Satisfação do cliente: 95%"],
-      tech: ["React", "Node.js", "PostgreSQL", "AWS"]
+      title: "E-commerce em 30 dias… ou quase",
+      problem: "Uma agência prometeu um e-commerce completo em 30 dias. O cliente pagou 50% adiantado. O que recebeu? Apenas um template gratuito, sem loja, checkout ou integração.",
+      solution: [
+        "Backlog claro com funcionalidades prioritárias",
+        "Critérios de aceite definidos para cada item", 
+        "Roadmap com validações semanais",
+        "Transparência no desenvolvimento"
+      ]
     },
     {
-      title: "Sistema de Gestão Hospitalar",
-      category: "Consultoria + Gestão",
-      description: "Consultoria e implementação de sistema de gestão para clínica médica com foco em otimização de processos.",
-      results: ["Redução de 50% no tempo de atendimento", "Eliminação de filas de espera", "ROI de 200% em 6 meses"],
-      tech: ["Vue.js", "Laravel", "MySQL", "Docker"]
+      title: "Site bonito, mas só no desktop",
+      problem: "Uma influenciadora contratou um freelancer com preço atrativo. O visual parecia ótimo no computador, mas o site quebrava no celular, não tinha SEO e não tinha painel de edição de conteúdo.",
+      solution: [
+        "Requisitos não funcionais bem definidos (responsividade, SEO, CMS)",
+        "Validação contínua com o usuário",
+        "Testes antes da entrega final"
+      ]
     },
     {
-      title: "Marketplace Digital",
-      category: "Product Owner",
-      description: "Criação de marketplace conectando fornecedores locais com consumidores finais através de plataforma mobile-first.",
-      results: ["1000+ usuários ativos", "Taxa de conversão: 25%", "NPS: 8.5/10"],
-      tech: ["React Native", "Firebase", "Stripe", "MongoDB"]
-    },
-    {
-      title: "Portal Corporativo",
-      category: "Desenvolvimento Web",
-      description: "Site institucional com CMS personalizado e integração com ferramentas de marketing digital.",
-      results: ["Aumento de 80% no tráfego", "Geração de 150+ leads/mês", "Melhoria de 70% no SEO"],
-      tech: ["Next.js", "Strapi", "Tailwind", "Vercel"]
+      title: "Sistema médico que nunca existiu",
+      problem: "Um investidor contratou uma equipe para um sistema de agendamento médico. Durante semanas, recebeu apenas vídeos simulando a interface, mas o sistema nunca existiu de verdade.",
+      solution: [
+        "MVP funcional testável, mesmo que simples",
+        "Acompanhamento por sprints e reuniões de review",
+        "Backlog visível com status atualizado"
+      ]
     }
   ];
 
@@ -41,42 +41,42 @@ const Portfolio = () => {
             Cases de <span className="text-medraup-blue">Sucesso</span>
           </h2>
           <div className="w-20 h-1 bg-medraup-orange mx-auto mb-6"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Projetos que transformaram ideias em resultados concretos para nossos clientes
-          </p>
+          <div className="max-w-4xl mx-auto">
+            <p className="text-xl text-gray-600 mb-4">
+              Você sabia que muita gente cai em golpes ao contratar um site?
+            </p>
+            <p className="text-lg text-gray-600">
+              Veja 3 casos reais de falsas entregas — e como técnicas de Product Owner (PO) poderiam ter evitado o prejuízo.
+            </p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
+        <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 max-w-4xl mx-auto">
+          {cases.map((caso, index) => (
             <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-medraup-gray-light">
               <CardContent className="p-8">
                 <div className="mb-6">
-                  <span className="inline-block bg-medraup-orange text-white px-3 py-1 rounded-full text-sm font-medium mb-4">
-                    {project.category}
+                  <span className="inline-block bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium mb-4">
+                    Caso {index + 1}
                   </span>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">{project.title}</h3>
-                  <p className="text-gray-600 leading-relaxed mb-6">{project.description}</p>
-                </div>
-
-                <div className="mb-6">
-                  <h4 className="font-semibold text-medraup-blue mb-3">Resultados Obtidos:</h4>
-                  <div className="space-y-2">
-                    {project.results.map((result, resultIndex) => (
-                      <div key={resultIndex} className="flex items-center text-gray-600">
-                        <div className="w-2 h-2 bg-medraup-orange rounded-full mr-3 flex-shrink-0"></div>
-                        <span>{result}</span>
-                      </div>
-                    ))}
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{caso.title}</h3>
+                  
+                  <div className="mb-6">
+                    <h4 className="font-semibold text-red-600 mb-3">⚠️ Situação:</h4>
+                    <p className="text-gray-600 leading-relaxed bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
+                      {caso.problem}
+                    </p>
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="font-semibold text-medraup-blue mb-3">Tecnologias:</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech, techIndex) => (
-                      <span key={techIndex} className="bg-medraup-blue text-white px-3 py-1 rounded-full text-sm">
-                        {tech}
-                      </span>
+                  <h4 className="font-semibold text-medraup-blue mb-3">✅ Com um PO no projeto:</h4>
+                  <div className="space-y-2 bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                    {caso.solution.map((solution, solutionIndex) => (
+                      <div key={solutionIndex} className="flex items-start text-gray-700">
+                        <div className="w-2 h-2 bg-medraup-orange rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                        <span>{solution}</span>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -85,8 +85,32 @@ const Portfolio = () => {
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <p className="text-gray-600 mb-6">Quer ver seu projeto aqui também?</p>
+        <div className="mt-16 text-center max-w-4xl mx-auto">
+          <div className="bg-gradient-to-br from-medraup-blue to-medraup-blue-dark rounded-2xl p-8 text-white">
+            <h3 className="text-2xl font-bold mb-6">O que aprendemos com isso?</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="text-center">
+                <p className="text-blue-100">Nem todo desenvolvedor é gestor de produto</p>
+              </div>
+              <div className="text-center">
+                <p className="text-blue-100">Nem todo projeto começa com código</p>
+              </div>
+              <div className="text-center">
+                <p className="text-blue-100">Todo projeto precisa de visão, alinhamento e transparência</p>
+              </div>
+            </div>
+            <p className="text-xl font-semibold text-medraup-orange mb-6">
+              É aí que entra o papel do Product Owner.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-12 text-center bg-medraup-gray-light p-8 rounded-2xl">
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Evite prejuízos. Tenha um PO com você.</h3>
+          <p className="text-lg text-gray-600 mb-6">
+            ✨ Eu sou <strong>Loyanne Medrado</strong>, PO e fundadora da <strong>Medraup</strong>.<br/>
+            Ajudo negócios a tirarem ideias do papel com entregas reais, funcionais e seguras.
+          </p>
           <button 
             onClick={() => {
               const element = document.querySelector("#contact");
@@ -94,7 +118,7 @@ const Portfolio = () => {
             }}
             className="bg-medraup-orange hover:bg-medraup-orange/90 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:scale-105"
           >
-            Vamos Conversar
+            🔗 Me chama para conversar!
           </button>
         </div>
       </div>

@@ -7,31 +7,41 @@ const About = () => {
           <div className="space-y-6">
             <div>
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                Sobre a <span className="text-medraup-blue">Medraup</span>
+                👩‍💻 <span className="text-medraup-blue">Sobre mim</span>
               </h2>
               <div className="w-20 h-1 bg-medraup-orange mb-6"></div>
             </div>
             
             <p className="text-lg text-gray-600 leading-relaxed">
-              A Medraup nasceu da paixão por transformar ideias complexas em soluções digitais reais e funcionais. Com expertise em Product Owner e gestão de projetos, ajudo empresas a materializar suas visões em produtos que realmente fazem a diferença no mercado.
+              Sou <strong>Loyanne Medrado</strong>, fundadora da <strong>Medraup</strong>, empresa especializada em gestão de produtos e projetos digitais.
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-              <div className="bg-medraup-gray-light p-6 rounded-lg">
-                <h3 className="font-semibold text-medraup-blue mb-2">Nossa Missão</h3>
-                <p className="text-gray-600">Transformar ideias em produtos digitais de sucesso através de metodologias ágeis e gestão estratégica.</p>
-              </div>
-              
-              <div className="bg-medraup-gray-light p-6 rounded-lg">
-                <h3 className="font-semibold text-medraup-blue mb-2">Nossa Visão</h3>
-                <p className="text-gray-600">Ser referência em Product Owner e gestão de projetos, impulsionando o crescimento dos nossos clientes.</p>
+            <div className="space-y-4">
+              <h3 className="text-xl font-semibold text-medraup-blue">Atuo com:</h3>
+              <div className="space-y-3">
+                <div className="flex items-start text-gray-600">
+                  <div className="w-2 h-2 bg-medraup-orange rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                  <span>Construção e validação de sites e plataformas</span>
+                </div>
+                <div className="flex items-start text-gray-600">
+                  <div className="w-2 h-2 bg-medraup-orange rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                  <span>Tradução de ideias para requisitos técnicos</span>
+                </div>
+                <div className="flex items-start text-gray-600">
+                  <div className="w-2 h-2 bg-medraup-orange rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                  <span>Acompanhamento de times de desenvolvimento</span>
+                </div>
+                <div className="flex items-start text-gray-600">
+                  <div className="w-2 h-2 bg-medraup-orange rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                  <span>Entregas reais com foco em valor de negócio</span>
+                </div>
               </div>
             </div>
           </div>
           
           <div className="relative">
             <div className="bg-gradient-to-br from-medraup-blue to-medraup-blue-dark rounded-2xl p-8 text-white">
-              <h3 className="text-2xl font-bold mb-6">Loyanne - Fundadora</h3>
+              <h3 className="text-2xl font-bold mb-6">Loyanne Medrado - Fundadora</h3>
               <p className="text-blue-100 mb-6 leading-relaxed">
                 Product Owner experiente com foco em metodologias ágeis e gestão estratégica de projetos. Especialista em transformar requisitos complexos em soluções práticas e eficientes.
               </p>
