@@ -1,4 +1,6 @@
 
+import { Linkedin, Instagram, MessageCircle } from "lucide-react";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -14,12 +16,12 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a 
-                href="https://linkedin.com" 
+                href="https://www.linkedin.com/in/loyannemedradoproductowner" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-medraup-orange rounded-lg flex items-center justify-center hover:bg-medraup-orange/90 transition-colors"
               >
-                <span className="text-white font-bold">in</span>
+                <Linkedin className="w-5 h-5 text-white" />
               </a>
               <a 
                 href="https://instagram.com" 
@@ -27,15 +29,15 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-medraup-orange rounded-lg flex items-center justify-center hover:bg-medraup-orange/90 transition-colors"
               >
-                <span className="text-white font-bold">ig</span>
+                <Instagram className="w-5 h-5 text-white" />
               </a>
               <a 
-                href="https://wa.me/5511999999999" 
+                href="https://wa.me/5531862749884" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-medraup-orange rounded-lg flex items-center justify-center hover:bg-medraup-orange/90 transition-colors"
               >
-                <span className="text-white font-bold">wa</span>
+                <MessageCircle className="w-5 h-5 text-white" />
               </a>
             </div>
           </div>
@@ -55,8 +57,8 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Contato</h4>
             <div className="space-y-2 text-blue-200">
-              <p>contato@medraup.com</p>
-              <p>(11) 99999-9999</p>
+              <p>loyannemedrado@hotmail.com</p>
+              <p>(31) 8627-4984</p>
               <p>São Paulo, SP</p>
             </div>
           </div>

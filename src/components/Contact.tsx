@@ -6,7 +6,7 @@ import { Textarea } from "./ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Card, CardContent } from "./ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone } from "lucide-react";
+import { Mail, MessageCircle } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -87,17 +87,17 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="font-semibold text-gray-900">Email</p>
-                      <p className="text-gray-600">contato@medraup.com</p>
+                      <p className="text-gray-600">loyannemedrado@hotmail.com</p>
                     </div>
                   </div>
                   
                   <div className="flex items-center">
                     <div className="w-12 h-12 bg-medraup-orange rounded-lg flex items-center justify-center mr-4">
-                      <Phone className="w-6 h-6 text-white" />
+                      <MessageCircle className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <p className="font-semibold text-gray-900">WhatsApp</p>
-                      <p className="text-gray-600">(11) 99999-9999</p>
+                      <p className="text-gray-600">(31) 8627-4984</p>
                     </div>
                   </div>
                 </div>
