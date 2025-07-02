@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Card, CardContent } from "./ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, MessageCircle } from "lucide-react";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -23,11 +24,24 @@ const Contact = () => {
     setIsLoading(true);
     
     try {
-      // Simulando envio de email - aqui você pode integrar com EmailJS ou outro serviço
-      console.log('Enviando email com dados:', formData);
+      // Configuração do EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        service_type: formData.service,
+        message: formData.message,
+        to_email: 'loyannemedrado@hotmail.com'
+      };
+
+      console.log('Enviando email com dados:', templateParams);
       
-      // Simular delay de envio
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Envio real com EmailJS
+      await emailjs.send(
+        'YOUR_SERVICE_ID', // Você precisa configurar isso no EmailJS
+        'YOUR_TEMPLATE_ID', // Você precisa configurar isso no EmailJS  
+        templateParams,
+        'YOUR_PUBLIC_KEY' // Você precisa configurar isso no EmailJS
+      );
       
       toast({
         title: "Mensagem enviada com sucesso!",
@@ -106,6 +120,13 @@ const Contact = () => {
                   <h4 className="font-bold mb-2">Resposta Rápida</h4>
                   <p className="text-blue-100 text-sm">
                     Respondo todas as mensagens em até 24 horas. Para urgências, use o WhatsApp!
+                  </p>
+                </div>
+
+                <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                  <p className="text-yellow-800 text-sm">
+                    <strong>Para ativar o envio de emails:</strong><br/>
+                    Configure suas chaves do EmailJS nas variáveis YOUR_SERVICE_ID, YOUR_TEMPLATE_ID e YOUR_PUBLIC_KEY no código.
                   </p>
                 </div>
               </CardContent>

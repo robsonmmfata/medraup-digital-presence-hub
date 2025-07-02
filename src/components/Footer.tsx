@@ -24,7 +24,7 @@ const Footer = () => {
                 <Linkedin className="w-5 h-5 text-white" />
               </a>
               <a 
-                href="https://instagram.com" 
+                href="https://www.instagram.com/medraup?igsh=MWVuMnJsY2s3OTBoZA==" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-medraup-orange rounded-lg flex items-center justify-center hover:bg-medraup-orange/90 transition-colors"
