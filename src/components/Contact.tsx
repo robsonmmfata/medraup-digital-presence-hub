@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -20,47 +21,111 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validação rigorosa antes de enviar
+    if (!formData.name.trim()) {
+      toast({
+        title: "Erro de validação",
+        description: "Nome é obrigatório",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!formData.email.trim()) {
+      toast({
+        title: "Erro de validação", 
+        description: "Email é obrigatório",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!formData.service) {
+      toast({
+        title: "Erro de validação",
+        description: "Selecione um serviço",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!formData.message.trim()) {
+      toast({
+        title: "Erro de validação",
+        description: "Mensagem é obrigatória", 
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsLoading(true);
     
     try {
+      // Log dos dados do formulário
+      console.log('=== DADOS DO FORMULÁRIO ===', {
+        name: formData.name,
+        email: formData.email,
+        service: formData.service,
+        message: formData.message
+      });
+
+      // Parâmetros do template - seguindo exatamente o que o EmailJS espera
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
-        to_name: 'Loyanne',
         to_email: 'loyannemedrado@hotmail.com',
         service_type: formData.service,
         message: formData.message,
         reply_to: formData.email
       };
 
-      console.log('Enviando email com parâmetros:', templateParams);
+      console.log('=== PARÂMETROS DO TEMPLATE ===', templateParams);
+      
+      // Verificar se EmailJS está inicializado
+      console.log('=== EMAILJS INICIALIZADO ===', typeof emailjs.send);
 
       const result = await emailjs.send(
-        'service_k7s7fa9',
-        'template_b46cp63',
+        'service_k7s7fa9',     // Service ID
+        'template_b46cp63',    // Template ID  
         templateParams,
-        'oXDDNqrxAfRm2Vv92'
+        'oXDDNqrxAfRm2Vv92'   // Public Key
       );
 
-      console.log('Email enviado com sucesso:', result);
+      console.log('=== RESULTADO DO ENVIO ===', result);
+      console.log('=== STATUS ===', result.status);
+      console.log('=== TEXT ===', result.text);
+
+      if (result.status === 200) {
+        toast({
+          title: "Email enviado com sucesso!",
+          description: "Sua mensagem foi enviada. Responderei em breve!",
+        });
+        
+        // Reset form apenas se enviou com sucesso
+        setFormData({
+          name: "",
+          email: "",
+          service: "",
+          message: ""
+        });
+      } else {
+        throw new Error(`Erro no envio: Status ${result.status}`);
+      }
+
+    } catch (error) {
+      console.error('=== ERRO COMPLETO ===', error);
+      console.error('=== TIPO DO ERRO ===', typeof error);
+      console.error('=== PROPRIEDADES DO ERRO ===', Object.keys(error));
+      
+      if (error instanceof Error) {
+        console.error('=== MENSAGEM DO ERRO ===', error.message);
+        console.error('=== STACK DO ERRO ===', error.stack);
+      }
 
       toast({
-        title: "Email enviado com sucesso!",
-        description: "Sua mensagem foi enviada. Responderei em breve!",
-      });
-      
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        service: "",
-        message: ""
-      });
-    } catch (error) {
-      console.error('Erro ao enviar email:', error);
-      toast({
         title: "Erro ao enviar email",
-        description: "Ocorreu um erro ao enviar sua mensagem. Tente novamente.",
+        description: `Erro detalhado: ${error instanceof Error ? error.message : 'Erro desconhecido'}`,
         variant: "destructive",
       });
     } finally {
@@ -69,6 +134,7 @@ const Contact = () => {
   };
 
   const handleInputChange = (field: string, value: string) => {
+    console.log(`=== CAMPO ALTERADO ===`, { field, value });
     setFormData(prev => ({
       ...prev,
       [field]: value
@@ -124,10 +190,10 @@ const Contact = () => {
                   </p>
                 </div>
 
-                <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-                  <p className="text-green-800 text-sm">
-                    <strong>Envio Automático:</strong><br/>
-                    O formulário agora envia emails automaticamente. Você receberá uma confirmação após o envio.
+                <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                  <p className="text-red-800 text-sm">
+                    <strong>Debug Mode:</strong><br/>
+                    Logs detalhados ativados. Verifique o console do navegador para detalhes do erro.
                   </p>
                 </div>
               </CardContent>
