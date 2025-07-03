@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -27,10 +26,13 @@ const Contact = () => {
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
+        to_email: 'loyannemedrado@hotmail.com', // Email de destino
         service_type: formData.service,
         message: formData.message,
         to_name: 'Loyanne',
       };
+
+      console.log('Enviando email com parâmetros:', templateParams);
 
       await emailjs.send(
         'service_k7s7fa9', // Service ID
