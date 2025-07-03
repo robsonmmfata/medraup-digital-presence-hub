@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Card, CardContent } from "./ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, MessageCircle } from "lucide-react";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -15,40 +16,51 @@ const Contact = () => {
     service: "",
     message: ""
   });
+  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     
-    // Criar o corpo do email
-    const emailBody = `
-Nome: ${formData.name}
-Email: ${formData.email}
-Serviço: ${formData.service}
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        service_type: formData.service,
+        message: formData.message,
+        to_name: 'Loyanne',
+      };
 
-Mensagem:
-${formData.message}
-    `;
-    
-    // Criar o link mailto
-    const subject = `Contato do site - ${formData.service}`;
-    const mailtoLink = `mailto:loyannemedrado@hotmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
-    
-    // Abrir o cliente de email
-    window.location.href = mailtoLink;
-    
-    toast({
-      title: "Cliente de email aberto!",
-      description: "Seu cliente de email foi aberto com a mensagem preenchida. Complete o envio por lá.",
-    });
-    
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      service: "",
-      message: ""
-    });
+      await emailjs.send(
+        'service_k7s7fa9', // Service ID
+        'template_b46cp63', // Template ID
+        templateParams,
+        'oXDDNqrxAfRm2Vv92' // Public Key
+      );
+
+      toast({
+        title: "Email enviado com sucesso!",
+        description: "Sua mensagem foi enviada. Responderei em breve!",
+      });
+      
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        service: "",
+        message: ""
+      });
+    } catch (error) {
+      console.error('Erro ao enviar email:', error);
+      toast({
+        title: "Erro ao enviar email",
+        description: "Ocorreu um erro ao enviar sua mensagem. Tente novamente.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -107,10 +119,10 @@ ${formData.message}
                   </p>
                 </div>
 
-                <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                  <p className="text-blue-800 text-sm">
-                    <strong>Envio Simplificado:</strong><br/>
-                    O formulário abrirá seu cliente de email com todos os dados preenchidos para facilitar o envio.
+                <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                  <p className="text-green-800 text-sm">
+                    <strong>Envio Automático:</strong><br/>
+                    O formulário agora envia emails automaticamente. Você receberá uma confirmação após o envio.
                   </p>
                 </div>
               </CardContent>
@@ -135,6 +147,7 @@ ${formData.message}
                         onChange={(e) => handleInputChange("name", e.target.value)}
                         className="h-12"
                         placeholder="Seu nome completo"
+                        disabled={isLoading}
                       />
                     </div>
                     
@@ -150,6 +163,7 @@ ${formData.message}
                         onChange={(e) => handleInputChange("email", e.target.value)}
                         className="h-12"
                         placeholder="seu@email.com"
+                        disabled={isLoading}
                       />
                     </div>
                   </div>
@@ -158,7 +172,7 @@ ${formData.message}
                     <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
                       Tipo de Serviço *
                     </label>
-                    <Select value={formData.service} onValueChange={(value) => handleInputChange("service", value)}>
+                    <Select value={formData.service} onValueChange={(value) => handleInputChange("service", value)} disabled={isLoading}>
                       <SelectTrigger className="h-12">
                         <SelectValue placeholder="Selecione o serviço desejado" />
                       </SelectTrigger>
@@ -183,6 +197,7 @@ ${formData.message}
                       onChange={(e) => handleInputChange("message", e.target.value)}
                       className="min-h-32"
                       placeholder="Conte-me mais sobre seu projeto e como posso ajudar..."
+                      disabled={isLoading}
                     />
                   </div>
 
@@ -190,8 +205,9 @@ ${formData.message}
                     type="submit" 
                     size="lg"
                     className="w-full bg-medraup-blue hover:bg-medraup-blue-dark text-white h-12 text-lg font-semibold"
+                    disabled={isLoading}
                   >
-                    Abrir Email para Envio
+                    {isLoading ? "Enviando..." : "Enviar Mensagem"}
                   </Button>
                 </form>
               </CardContent>
