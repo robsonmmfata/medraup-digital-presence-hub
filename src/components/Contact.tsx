@@ -26,20 +26,23 @@ const Contact = () => {
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
-        to_email: 'loyannemedrado@hotmail.com', // Email de destino
+        to_name: 'Loyanne',
+        to_email: 'loyannemedrado@hotmail.com',
         service_type: formData.service,
         message: formData.message,
-        to_name: 'Loyanne',
+        reply_to: formData.email
       };
 
       console.log('Enviando email com parâmetros:', templateParams);
 
-      await emailjs.send(
-        'service_k7s7fa9', // Service ID
-        'template_b46cp63', // Template ID
+      const result = await emailjs.send(
+        'service_k7s7fa9',
+        'template_b46cp63',
         templateParams,
-        'oXDDNqrxAfRm2Vv92' // Public Key
+        'oXDDNqrxAfRm2Vv92'
       );
+
+      console.log('Email enviado com sucesso:', result);
 
       toast({
         title: "Email enviado com sucesso!",
