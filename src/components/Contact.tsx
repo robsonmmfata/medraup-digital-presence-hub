@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -37,13 +36,18 @@ const Contact = () => {
     try {
       // Parâmetros ajustados para seu template Auto-Reply
       const templateParams = {
-        name: formData.name,           // {{name}} no template
-        email: formData.email,         // {{email}} no template (To Email)
-        title: formData.service,       // {{title}} no template
-        message: formData.message      // Conteúdo da mensagem
+        from_name: formData.name,        // Nome da pessoa que está enviando
+        email: formData.email,           // Email do usuário (To Email no template)
+        reply_to: "loyannemedrado@hotmail.com",  // Seu email para resposta
+        service_type: formData.service,  // Tipo de serviço selecionado
+        message: formData.message,       // Mensagem do usuário
+        to_name: "Loyanne Medrado"       // Seu nome
       };
 
-      console.log('=== ENVIANDO EMAIL ===', templateParams);
+      console.log('=== ENVIANDO EMAIL ===');
+      console.log('Template ID:', 'template_b46cp63');
+      console.log('Service ID:', 'service_k7s7fa9');
+      console.log('Parâmetros:', templateParams);
 
       const result = await emailjs.send(
         'service_k7s7fa9',     // Seu Service ID
@@ -52,7 +56,7 @@ const Contact = () => {
         'oXDDNqrxAfRm2Vv92'   // Sua Public Key
       );
 
-      console.log('=== RESULTADO ===', result);
+      console.log('=== RESULTADO DO ENVIO ===', result);
 
       if (result.status === 200) {
         toast({
@@ -60,6 +64,7 @@ const Contact = () => {
           description: "Sua mensagem foi enviada. Responderei em breve!",
         });
         
+        // Limpar formulário
         setFormData({
           name: "",
           email: "",
@@ -69,7 +74,7 @@ const Contact = () => {
       }
 
     } catch (error) {
-      console.error('=== ERRO ===', error);
+      console.error('=== ERRO AO ENVIAR EMAIL ===', error);
       toast({
         title: "Erro ao enviar email",
         description: "Tente novamente ou entre em contato pelo WhatsApp",
