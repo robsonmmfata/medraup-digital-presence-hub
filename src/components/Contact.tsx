@@ -22,38 +22,11 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validação rigorosa antes de enviar
-    if (!formData.name.trim()) {
+    // Validação
+    if (!formData.name.trim() || !formData.email.trim() || !formData.service || !formData.message.trim()) {
       toast({
         title: "Erro de validação",
-        description: "Nome é obrigatório",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    if (!formData.email.trim()) {
-      toast({
-        title: "Erro de validação", 
-        description: "Email é obrigatório",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    if (!formData.service) {
-      toast({
-        title: "Erro de validação",
-        description: "Selecione um serviço",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    if (!formData.message.trim()) {
-      toast({
-        title: "Erro de validação",
-        description: "Mensagem é obrigatória", 
+        description: "Todos os campos são obrigatórios",
         variant: "destructive",
       });
       return;
@@ -62,39 +35,24 @@ const Contact = () => {
     setIsLoading(true);
     
     try {
-      // Log dos dados do formulário
-      console.log('=== DADOS DO FORMULÁRIO ===', {
-        name: formData.name,
-        email: formData.email,
-        service: formData.service,
-        message: formData.message
-      });
-
-      // Parâmetros do template - seguindo exatamente o que o EmailJS espera
+      // Parâmetros ajustados para seu template Auto-Reply
       const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        to_email: 'loyannemedrado@hotmail.com',
-        service_type: formData.service,
-        message: formData.message,
-        reply_to: formData.email
+        name: formData.name,           // {{name}} no template
+        email: formData.email,         // {{email}} no template (To Email)
+        title: formData.service,       // {{title}} no template
+        message: formData.message      // Conteúdo da mensagem
       };
 
-      console.log('=== PARÂMETROS DO TEMPLATE ===', templateParams);
-      
-      // Verificar se EmailJS está inicializado
-      console.log('=== EMAILJS INICIALIZADO ===', typeof emailjs.send);
+      console.log('=== ENVIANDO EMAIL ===', templateParams);
 
       const result = await emailjs.send(
-        'service_k7s7fa9',     // Service ID
-        'template_b46cp63',    // Template ID  
+        'service_k7s7fa9',     // Seu Service ID
+        'template_b46cp63',    // Seu Template ID
         templateParams,
-        'oXDDNqrxAfRm2Vv92'   // Public Key
+        'oXDDNqrxAfRm2Vv92'   // Sua Public Key
       );
 
-      console.log('=== RESULTADO DO ENVIO ===', result);
-      console.log('=== STATUS ===', result.status);
-      console.log('=== TEXT ===', result.text);
+      console.log('=== RESULTADO ===', result);
 
       if (result.status === 200) {
         toast({
@@ -102,30 +60,19 @@ const Contact = () => {
           description: "Sua mensagem foi enviada. Responderei em breve!",
         });
         
-        // Reset form apenas se enviou com sucesso
         setFormData({
           name: "",
           email: "",
           service: "",
           message: ""
         });
-      } else {
-        throw new Error(`Erro no envio: Status ${result.status}`);
       }
 
     } catch (error) {
-      console.error('=== ERRO COMPLETO ===', error);
-      console.error('=== TIPO DO ERRO ===', typeof error);
-      console.error('=== PROPRIEDADES DO ERRO ===', Object.keys(error));
-      
-      if (error instanceof Error) {
-        console.error('=== MENSAGEM DO ERRO ===', error.message);
-        console.error('=== STACK DO ERRO ===', error.stack);
-      }
-
+      console.error('=== ERRO ===', error);
       toast({
         title: "Erro ao enviar email",
-        description: `Erro detalhado: ${error instanceof Error ? error.message : 'Erro desconhecido'}`,
+        description: "Tente novamente ou entre em contato pelo WhatsApp",
         variant: "destructive",
       });
     } finally {
@@ -134,7 +81,6 @@ const Contact = () => {
   };
 
   const handleInputChange = (field: string, value: string) => {
-    console.log(`=== CAMPO ALTERADO ===`, { field, value });
     setFormData(prev => ({
       ...prev,
       [field]: value
@@ -189,13 +135,6 @@ const Contact = () => {
                     Respondo todas as mensagens em até 24 horas. Para urgências, use o WhatsApp!
                   </p>
                 </div>
-
-                <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                  <p className="text-red-800 text-sm">
-                    <strong>Debug Mode:</strong><br/>
-                    Logs detalhados ativados. Verifique o console do navegador para detalhes do erro.
-                  </p>
-                </div>
               </CardContent>
             </Card>
           </div>
@@ -248,11 +187,11 @@ const Contact = () => {
                         <SelectValue placeholder="Selecione o serviço desejado" />
                       </SelectTrigger>
                       <SelectContent className="bg-white z-50">
-                        <SelectItem value="product-owner">Product Owner</SelectItem>
-                        <SelectItem value="project-management">Gerência de Projetos</SelectItem>
-                        <SelectItem value="web-development">Criação de Sites/Plataformas</SelectItem>
-                        <SelectItem value="consulting">Consultoria</SelectItem>
-                        <SelectItem value="other">Outro</SelectItem>
+                        <SelectItem value="Product Owner">Product Owner</SelectItem>
+                        <SelectItem value="Gerência de Projetos">Gerência de Projetos</SelectItem>
+                        <SelectItem value="Criação de Sites/Plataformas">Criação de Sites/Plataformas</SelectItem>
+                        <SelectItem value="Consultoria">Consultoria</SelectItem>
+                        <SelectItem value="Outro">Outro</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
