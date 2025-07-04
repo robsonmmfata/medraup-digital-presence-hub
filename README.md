@@ -1,73 +1,50 @@
-# Welcome to your Lovable project
+# 🧠 Medraup - Digital Presence Hub
 
-## Project info
+![GitHub Repo Stars](https://img.shields.io/github/stars/robsonmmfata/medraup-digital-presence-hub?style=flat-square)
+![GitHub Forks](https://img.shields.io/github/forks/robsonmmfata/medraup-digital-presence-hub?style=flat-square)
+![GitHub License](https://img.shields.io/github/license/robsonmmfata/medraup-digital-presence-hub?style=flat-square)
+![Last Commit](https://img.shields.io/github/last-commit/robsonmmfata/medraup-digital-presence-hub?style=flat-square)
+![GitHub Deploy](https://img.shields.io/badge/deploy-vercel-blue?logo=vercel&style=flat-square)
 
-**URL**: https://lovable.dev/projects/89ee20bd-ceb8-4260-9cbe-1f2297893bfb
+---
 
-## How can I edit this code?
+## 🧩 Sobre o Projeto
 
-There are several ways of editing your application.
+O **Medraup Digital Presence Hub** é um projeto moderno e responsivo desenvolvido para fortalecer a presença digital de empresas e profissionais. Ele centraliza redes sociais, contatos, portfólio e outras informações importantes em um só lugar — tudo com um design limpo, elegante e intuitivo.
 
-**Use Lovable**
+> 💡 Ideal para agências, empreendedores, criadores de conteúdo, ou qualquer pessoa que queira causar uma boa primeira impressão online.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/89ee20bd-ceb8-4260-9cbe-1f2297893bfb) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## ✨ Funcionalidades
 
-**Use your preferred IDE**
+- ✅ Design responsivo e moderno
+- 🌙 Dark mode
+- 🌐 Integração com redes sociais
+- 📱 Link para WhatsApp com mensagem personalizada
+- 🧾 Sessão de portfólio ou serviços
+- 📥 Chamada para ação (call-to-action)
+- ⚙️ Totalmente customizável via código
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🚀 Tecnologias Utilizadas
 
-Follow these steps:
+| Frontend        | Deploy |
+|-----------------|--------|
+| ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB) | ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white) |
+| ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white) |  |
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 🖼️ Screenshot
 
-# Step 3: Install the necessary dependencies.
-npm i
+![medraup-preview](https://github.com/robsonmmfata/medraup-digital-presence-hub/assets/preview.png)
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+---
 
-**Edit a file directly in GitHub**
+## 📦 Como Rodar Localmente
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/89ee20bd-ceb8-4260-9cbe-1f2297893bfb) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+1. Clone o repositório:
+```bash
+git clone https://github.com/robsonmmfata/medraup-digital-presence-hub.git
