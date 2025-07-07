@@ -44,9 +44,11 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-2xl lg:text-3xl font-bold text-white">
-              Medraup
-            </h1>
+            <img 
+              src="/lovable-uploads/6b632b81-e47a-4865-8474-8c8bf273eac9.png" 
+              alt="Medraup Logo" 
+              className="h-10 lg:h-12 w-auto"
+            />
           </div>
 
           {/* Desktop Menu */}
