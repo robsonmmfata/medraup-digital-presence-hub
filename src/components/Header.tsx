@@ -47,7 +47,7 @@ const Header = () => {
             <img 
               src="/lovable-uploads/6b632b81-e47a-4865-8474-8c8bf273eac9.png" 
               alt="Medraup Logo" 
-              className="h-12 lg:h-16 w-auto"
+              className="h-16 lg:h-20 w-auto"
             />
           </div>
 
