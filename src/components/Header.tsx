@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
@@ -18,7 +17,6 @@ const Header = () => {
 
   const menuItems = [
     { label: "Início", href: "#home" },
-    { label: "Sobre", href: "#about" },
     { label: "Serviços", href: "#services" },
     { label: "Portfólio", href: "#portfolio" },
     { label: "Contato", href: "#contact" }
