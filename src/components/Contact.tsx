@@ -94,50 +94,50 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-12 sm:py-16 lg:py-24 bg-medraup-gray-light">
+    <section id="contact" className="py-16 sm:py-20 lg:py-24 bg-medraup-gray-light">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 px-2">
             Vamos <span className="text-medraup-blue">Conversar?</span>
           </h2>
           <div className="w-20 h-1 bg-medraup-orange mx-auto mb-6"></div>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4 leading-relaxed">
             Pronta para transformar suas ideias em realidade? Entre em contato e vamos construir algo incrível juntos!
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* Contact Info */}
           <div className="lg:col-span-1 order-2 lg:order-1">
-            <Card className="border-0 bg-white shadow-lg">
+            <Card className="border-0 bg-white shadow-lg h-full">
               <CardContent className="p-6 sm:p-8">
                 <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Informações de Contato</h3>
                 
                 <div className="space-y-6">
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 bg-medraup-blue rounded-lg flex items-center justify-center mr-4">
+                  <div className="flex items-start">
+                    <div className="w-12 h-12 bg-medraup-blue rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
                       <Mail className="w-6 h-6 text-white" />
                     </div>
-                    <div>
-                      <p className="font-semibold text-gray-900 text-sm sm:text-base">Email</p>
-                      <p className="text-gray-600 text-sm sm:text-base break-all">loyannemedrado@hotmail.com</p>
+                    <div className="min-w-0 flex-1">
+                      <p className="font-semibold text-gray-900 text-base mb-1">Email</p>
+                      <p className="text-gray-600 text-base break-all">loyannemedrado@hotmail.com</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 bg-medraup-orange rounded-lg flex items-center justify-center mr-4">
+                  <div className="flex items-start">
+                    <div className="w-12 h-12 bg-medraup-orange rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
                       <MessageCircle className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <p className="font-semibold text-gray-900 text-sm sm:text-base">WhatsApp</p>
-                      <p className="text-gray-600 text-sm sm:text-base">(31) 8627-4984</p>
+                      <p className="font-semibold text-gray-900 text-base mb-1">WhatsApp</p>
+                      <p className="text-gray-600 text-base">(31) 8627-4984</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="mt-8 p-4 sm:p-6 bg-gradient-to-br from-medraup-blue to-medraup-blue-dark rounded-lg text-white">
-                  <h4 className="font-bold mb-2 text-sm sm:text-base">Resposta Rápida</h4>
-                  <p className="text-blue-100 text-xs sm:text-sm">
+                  <h4 className="font-bold mb-2 text-base">Resposta Rápida</h4>
+                  <p className="text-blue-100 text-sm leading-relaxed">
                     Respondo todas as mensagens em até 24 horas. Para urgências, use o WhatsApp!
                   </p>
                 </div>
@@ -150,7 +150,7 @@ const Contact = () => {
             <Card className="border-0 bg-white shadow-lg">
               <CardContent className="p-6 sm:p-8">
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                         Nome Completo *
@@ -161,7 +161,7 @@ const Contact = () => {
                         required
                         value={formData.name}
                         onChange={(e) => handleInputChange("name", e.target.value)}
-                        className="h-10 sm:h-12 text-sm sm:text-base"
+                        className="h-12 text-base"
                         placeholder="Seu nome completo"
                         disabled={isLoading}
                       />
@@ -177,7 +177,7 @@ const Contact = () => {
                         required
                         value={formData.email}
                         onChange={(e) => handleInputChange("email", e.target.value)}
-                        className="h-10 sm:h-12 text-sm sm:text-base"
+                        className="h-12 text-base"
                         placeholder="seu@email.com"
                         disabled={isLoading}
                       />
@@ -189,7 +189,7 @@ const Contact = () => {
                       Tipo de Serviço *
                     </label>
                     <Select value={formData.service} onValueChange={(value) => handleInputChange("service", value)} disabled={isLoading}>
-                      <SelectTrigger className="h-10 sm:h-12 text-sm sm:text-base">
+                      <SelectTrigger className="h-12 text-base">
                         <SelectValue placeholder="Selecione o serviço desejado" />
                       </SelectTrigger>
                       <SelectContent className="bg-white z-50">
@@ -211,7 +211,7 @@ const Contact = () => {
                       required
                       value={formData.message}
                       onChange={(e) => handleInputChange("message", e.target.value)}
-                      className="min-h-24 sm:min-h-32 text-sm sm:text-base"
+                      className="min-h-32 text-base resize-none"
                       placeholder="Conte-me mais sobre seu projeto e como posso ajudar..."
                       disabled={isLoading}
                     />
@@ -220,7 +220,7 @@ const Contact = () => {
                   <Button 
                     type="submit" 
                     size="lg"
-                    className="w-full bg-medraup-blue hover:bg-medraup-blue-dark text-white h-10 sm:h-12 text-base sm:text-lg font-semibold"
+                    className="w-full bg-medraup-blue hover:bg-medraup-blue-dark text-white h-14 text-lg font-semibold"
                     disabled={isLoading}
                   >
                     {isLoading ? "Enviando..." : "Enviar Mensagem"}

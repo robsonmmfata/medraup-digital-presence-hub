@@ -39,31 +39,31 @@ const Header = () => {
           : 'bg-medraup-blue shadow-md'
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
+      <div className="container mx-auto px-3 sm:px-4 lg:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-18 lg:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
             <img 
               src="/lovable-uploads/6b632b81-e47a-4865-8474-8c8bf273eac9.png" 
               alt="Medraup Logo" 
-              className="h-8 sm:h-12 lg:h-16 w-auto"
+              className="h-10 sm:h-14 lg:h-16 w-auto"
             />
           </div>
 
           {/* Desktop Menu */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
             {menuItems.map((item) => (
               <button
                 key={item.label}
                 onClick={() => scrollToSection(item.href)}
-                className="text-white hover:text-medraup-orange transition-colors duration-200 text-sm xl:text-base"
+                className="text-white hover:text-medraup-orange transition-colors duration-200 text-sm lg:text-base font-medium"
               >
                 {item.label}
               </button>
             ))}
             <Button 
               onClick={() => scrollToSection("#contact")}
-              className="bg-medraup-orange hover:bg-medraup-orange/90 text-white text-sm xl:text-base px-4 py-2"
+              className="bg-medraup-orange hover:bg-medraup-orange/90 text-white text-sm lg:text-base px-4 lg:px-6 py-2"
               size="sm"
             >
               Fale Comigo
@@ -72,29 +72,29 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 text-white"
+            className="md:hidden p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-medraup-blue border-t shadow-lg animate-slide-down">
-            <nav className="container mx-auto px-4 py-4">
+          <div className="md:hidden absolute top-full left-0 right-0 bg-medraup-blue border-t shadow-lg animate-slide-down">
+            <nav className="container mx-auto px-3 py-4">
               {menuItems.map((item) => (
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left py-3 text-white hover:text-medraup-orange transition-colors text-base"
+                  className="block w-full text-left py-3 px-2 text-white hover:text-medraup-orange hover:bg-white/5 rounded-lg transition-colors text-base font-medium"
                 >
                   {item.label}
                 </button>
               ))}
               <Button 
                 onClick={() => scrollToSection("#contact")}
-                className="w-full mt-4 bg-medraup-orange hover:bg-medraup-orange/90 text-white"
+                className="w-full mt-3 bg-medraup-orange hover:bg-medraup-orange/90 text-white font-medium"
               >
                 Fale Comigo
               </Button>
