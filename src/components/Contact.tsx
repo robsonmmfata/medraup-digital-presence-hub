@@ -130,7 +130,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="font-semibold text-gray-900 text-base mb-1">WhatsApp</p>
-                      <p className="text-gray-600 text-base">(31) 8627-4984</p>
+                      <p className="text-gray-600 text-base">(31) 98627-4984</p>
                     </div>
                   </div>
                 </div>

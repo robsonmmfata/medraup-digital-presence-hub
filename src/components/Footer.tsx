@@ -32,7 +32,7 @@ const Footer = () => {
                 <Instagram className="w-6 h-6 text-white" />
               </a>
               <a 
-                href="https://wa.me/5531862749884" 
+                href="https://wa.me/5531986274984" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-12 h-12 bg-medraup-orange rounded-lg flex items-center justify-center hover:bg-medraup-orange/90 transition-colors"
@@ -58,7 +58,7 @@ const Footer = () => {
             <h4 className="text-lg sm:text-xl font-semibold mb-4">Contato</h4>
             <div className="space-y-3 text-blue-200 text-base">
               <p className="break-all">loyannemedrado@hotmail.com</p>
-              <p>(31) 8627-4984</p>
+              <p>(31) 98627-4984</p>
               <p>São Paulo, SP</p>
             </div>
           </div>
